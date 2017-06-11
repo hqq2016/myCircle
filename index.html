@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    ul,
+    li {
+      list-style: none;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+  <style>
+    .canvas_wrapper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .canvas_wrapper > div {
+      transition: 10s all;
+      transition: 20s all, 10s width, 10s height;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  
+
+<div class="jsCircleWrapper"></div>
+
+
+<script src="./Circle.js"></script>
+<script>
+  window.onload = function () {
+    var animationCanvas = new Circle({
+      el: document.body,
+      num: 30,
+      outerSize: 500,
+      changeSize: true
+    });
+    animationCanvas.init();
+
+  }
+</script>
+
+</body>
+</html>
