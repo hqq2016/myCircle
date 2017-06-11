@@ -38,7 +38,7 @@
       this.wrapper.className = "canvas_wrapper";
       this.el.appendChild(this.wrapper);
     },
-    createdCircle(size) {
+    createdCircle: function(size) {
       var circle = document.createElement('div');
       var clientSize = this.getClientSize();
       var left = this.getPos(clientSize.clientWidth - size);
@@ -50,19 +50,19 @@
       this.wrapper.appendChild(circle);
       return circle;
     },
-    getClientSize() {
+    getClientSize: function() {
       var body = document.body;
       return {
         clientWidth: body.clientWidth,
         clientHeight: body.clientHeight
       }
     },
-    createStyle() {
+    createStyle: function() {
       var style = document.createElement('style');
       style.innerHTML = '';
       document.head.appendChild(style);
     },
-    getRandomTime() {
+    getRandomTime: function() {
       return getRandom(3000, 8000);
     },
     startCircle: function (circle) {
@@ -77,7 +77,7 @@
         }, that.getRandomTime());
       }, 0)
     },
-    getPos (maxSize) {
+    getPos: function(maxSize) {
       return getRandom(0 - this.outerSize, maxSize + this.outerSize);
     },
     animate: function (circle) {
