@@ -27,8 +27,10 @@
       position: relative;
     }
     .canvas_wrapper > div {
-      transition: 10s all;
       transition: 20s all, 10s width, 10s height;
+      -webkit-transition: 20s all, 10s width, 10s height;
+      -ms-transition: 20s all, 10s width, 10s height;
+      -o-transition: 20s all, 10s width, 10s height;
       border-radius: 50%;
       position: absolute;
       background: url(./images/pop.png);
