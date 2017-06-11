@@ -1,6 +1,13 @@
 !(function (window, document) {
 
-  function getRandom(min, max) {
+  var isIE = function (ver) {
+    var b = document.createElement('b')
+    b.innerHTML = '<!--[if IE ' + ver + ']><i></i><![endif]-->'
+    return b.getElementsByTagName('i').length === 1
+  }
+  var ltIe9 = isIE(6) || isIE(7) || isIE(8) || isIE(9)
+
+  var getRandom = function (min, max) {
     return Math.random() * (max - min) + min;
   }
 
@@ -11,13 +18,14 @@
     this.minSize = obj.minSize || 30;
     this.maxSize = obj.maxSize || 100;
     this.outerSize = obj.outerSize || 0;
-    this.changeSize = obj.changeSize 
+    this.changeSize = obj.changeSize
     this.wrapper;
   }
 
   Circle.prototype = {
     init: function () {
       this.createWrapper();
+      if (ltIe9) return;
       this.created();
     },
     created: function () {
@@ -38,7 +46,7 @@
       this.wrapper.className = "canvas_wrapper";
       this.el.appendChild(this.wrapper);
     },
-    createdCircle: function(size) {
+    createdCircle: function (size) {
       var circle = document.createElement('div');
       var clientSize = this.getClientSize();
       var left = this.getPos(clientSize.clientWidth - size);
@@ -50,19 +58,19 @@
       this.wrapper.appendChild(circle);
       return circle;
     },
-    getClientSize: function() {
+    getClientSize: function () {
       var body = document.body;
       return {
         clientWidth: body.clientWidth,
         clientHeight: body.clientHeight
       }
     },
-    createStyle: function() {
+    createStyle: function () {
       var style = document.createElement('style');
       style.innerHTML = '';
       document.head.appendChild(style);
     },
-    getRandomTime: function() {
+    getRandomTime: function () {
       return getRandom(3000, 8000);
     },
     startCircle: function (circle) {
@@ -77,7 +85,7 @@
         }, that.getRandomTime());
       }, 0)
     },
-    getPos: function(maxSize) {
+    getPos: function (maxSize) {
       return getRandom(0 - this.outerSize, maxSize + this.outerSize);
     },
     animate: function (circle) {
